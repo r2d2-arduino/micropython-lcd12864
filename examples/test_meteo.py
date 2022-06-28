@@ -1,10 +1,8 @@
 """
-Project path: https://github.com/r2d2-arduino/lcd19264-st7920
+Project path: https://github.com/r2d2-arduino/micropython-lcd12864
 
 Author:
   28 june 2022 - r2d2-arduino
-  
-Author(s): Derkach Arthur
 
 """
 from machine import SPI, Pin
