@@ -1,7 +1,7 @@
 """" lcd12864 is a FrameBuffer based MicroPython driver for the graphical
      LiquidCrystal LCD12864 display (also known as DFR0091).
 
-Project path: https://github.com/r2d2-arduino/lcd19264-st7920
+Project path: https://github.com/r2d2-arduino/micropython-lcd12864
 
 This project is updated version of
     project: https://github.com/mchobby/esp8266-upy/tree/master/lcdspi-lcd12864
