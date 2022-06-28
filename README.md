@@ -2,7 +2,7 @@
 
 ![Image](./photo/lcd12864.jpg)
 
-**LCD12864 connect**
+**LCD12864 connect using SPI**
 
 |LCD12864|ESP8266|
 | ------ | ------ |
@@ -37,3 +37,13 @@ lcd.rect(0,0,128,64,1)
 lcd.rect(3,3,128-6,64-6,1)
 lcd.update()
 ```
+This project is a updated version of project from: https://github.com/mchobby/esp8266-upy/tree/master/lcdspi-lcd12864
+
+Additions:
+* vertical rotaion
+* fast graphic render
+* no blink in display
+
+All dependencies are used only in examples. To reduce resource consumption, I sometimes use compiled libraries with .mpy extention (This mpy version-5 work fine with Micropython v1.12-1.18). But you can take normal library: with .py, or compile your own. See: https://docs.micropython.org/en/latest/reference/mpyfiles.html
+
+The "test_meteo.py" example for a big fonts uses the "Writer" class. See: https://github.com/peterhinch/micropython-font-to-py/blob/master/writer/WRITER.md
