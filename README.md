@@ -19,7 +19,7 @@
 |NC|-|
 |RST|+5V|
 |VOUT|-|
-|BLA|+5v|
+|BLA|+3.3v|
 |BLK|GND|
 
 Code example:
