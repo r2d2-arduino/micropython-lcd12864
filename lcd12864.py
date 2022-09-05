@@ -29,7 +29,7 @@ PSB -> GND
 NC
 RST -> 5V
 VOUT
-BLA -> 5V
+BLA -> 3.3V
 BLK -> GND
 
 """
