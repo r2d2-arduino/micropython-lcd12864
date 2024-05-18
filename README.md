@@ -4,23 +4,23 @@
 
 **LCD12864 connect using SPI**
 
-|LCD12864|ESP8266|
-| ------ | ------ |
-|GND|GND|
-|VCC|+5V|
-|V0|-|
-|RS|GPIO15(D8)|
-|R/W|GPIO13(D7)|
-|E|GPIO14(D5)|
-|DB0|-|
-|..|-|
-|DB7|-|
-|PSB|GND|
-|NC|-|
-|RST|+5V|
-|VOUT|-|
-|BLA|+3.3v|
-|BLK|GND|
+|LCD12864|ESP8266|Notes|
+| ------ | ------ | ----- |
+|GND|GND|  |
+|VCC|+5V|  |
+|V0|-|  |
+|RS|GPIO15(D8)| SPI CS |
+|R/W|GPIO13(D7)| SPI Mosi |
+|E|GPIO14(D5)| SPI Sck |
+|DB0|-|  |
+|..|-|  | 
+|DB7|-|  |
+|PSB|GND|  |
+|NC|-|  |
+|RST|+5V|  |
+|VOUT|-|  |
+|BLA|+3.3V| or 5v |
+|BLK|GND|  |
 
 Code example:
 
