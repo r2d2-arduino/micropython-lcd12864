@@ -1,4 +1,5 @@
 # micropython-lcd12864 (st7920)
+Framebuffer display driver for LiquidCrystal LCD12864 (SPI)
 
 ![Image](./photo/lcd12864.jpg)
 
@@ -25,25 +26,28 @@
 Code example:
 
 ```python
-from machine import SPI, Pin
-from lcd12864 import SPI_LCD12864
+from machine import SPI
+from lcd12864_spi import LCD12864_SPI
 
-spi = machine.SPI(1, baudrate=100000, polarity=1, phase=1)
-cs = Pin( 15, Pin.OUT, value=0 )
+spi = SPI( 1, baudrate = 4_000_000, polarity = 1, phase = 1 )
+lcd = LCD12864_SPI( spi = spi, cs_pin = 15, rotation = 1 )
 
-lcd = SPI_LCD12864( spi=spi, cs=cs )
 lcd.text( "MicroPython !", 10, 25, 1 )
-lcd.rect(0,0,128,64,1)
-lcd.rect(3,3,128-6,64-6,1)
-lcd.update()
+lcd.rect( 0, 0, 128, 64, 1 )
+lcd.rect( 3, 3, 128-6, 64-6, 1 )
+lcd.show()
 ```
-This project is a updated version of project from: https://github.com/mchobby/esp8266-upy/tree/master/lcdspi-lcd12864
+## Display functions:
+* **clear( self ):** - Clear display
+* **set_font(self, font):** - Set font for text
+* **set_text_wrap(self, on = True):** - Set text wrapping
+* **draw_text(self, text, x, y, color = 1):** - Draw text on display
+* **draw_bitmap(self, bitmap, x, y, color = 1):** - Draw a bitmap on display
+* **show( self ):** - Send frameBuffer to lcd
+* **other framebuffer functions** - see more on https://docs.micropython.org/en/latest/library/framebuf.html#module-framebuf
 
-Additions:
-* vertical rotaion
-* fast graphic render
-* no blink in display
+## Tools
+* **tools/font_to_py.py** - Used to convert ttf font to py-script. First of all, you need to install: `pip install freetype-py`. Then run a command similar to the example: `python font_to_py.py -x LibreBodoni-Bold.ttf 24 LibreBodoni24.py`. More details: https://github.com/peterhinch/micropython-font-to-py
 
-All dependencies are used only in examples. To reduce resource consumption, I sometimes use compiled libraries with .mpy extention (This mpy version-5 work fine with Micropython v1.12-1.18). But you can take normal library: with .py, or compile your own. See: https://docs.micropython.org/en/latest/reference/mpyfiles.html
 
-The "test_meteo.py" example for a big fonts uses the "Writer" class. See: https://github.com/peterhinch/micropython-font-to-py/blob/master/writer/WRITER.md
+
