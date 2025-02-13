@@ -1,5 +1,5 @@
 """
-LCD12864_SPI v 0.2.2
+LCD12864_SPI v 0.2.3
 
 LCD12864_SPI is a FrameBuffer based MicroPython driver for the graphical
 LiquidCrystal LCD12864 display (also known as st7920).
@@ -13,22 +13,22 @@ MIT License
 
 Author: Arthur Derkach 
   
-LCD -> ESP8266
+LCD -> ESP32 / ESP8266
 --------------
 GND -> GND
 VCC -> 5V
 V0
-RS  -> D8 GPIO15 CS/SS
+RS  -> CS_PIN
 R/W -> D7 GPIO13 MOSI
 E   -> D5 GPIO14 SCK
 DB0
 ..
 DB7
-PSB -> GND
+PSB -> GND or LOW
 NC
-RST -> 5V
+RST -> RST_PIN or HI
 VOUT
-BLA -> 3.3V
+BLA -> 3.3-5V
 BLK -> GND
 """
 
@@ -62,17 +62,18 @@ LCD_WIDTH  = const(128)
 LCD_HEIGHT = const(64)
 
 class LCD12864_SPI( FrameBuffer ):
-    def __init__( self, spi, cs_pin, rotation = 0 ):
+    def __init__( self, spi, cs_pin, rst_pin, rotation = 0 ):
         """ Constructor
         Args
         spi  (object): SPI
         cs   (object): CS pin (Chip Select)
         rotation (int): Display rotation 0 = 0 degrees, 1 = 180 degrees
         """ 
-        # Driving the LCD3310
         self.spi = spi
         self.cs  = Pin( cs_pin, Pin.OUT, value = 0 )
-
+        
+        if (rst_pin):
+            Pin( rst_pin, Pin.OUT, value = 1 )
         # Other properties
         self.height = LCD_HEIGHT
         self.width  = LCD_WIDTH
