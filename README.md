@@ -10,9 +10,9 @@ Framebuffer display driver for LiquidCrystal LCD12864 (SPI)
 |GND|GND|GND|  |
 |VCC|+5V|+5V| or VIN |
 |V0|-|-|-|
-|RS|GPIO15(D6)|GPIO15|CS_PIN|
-|R/W|GPIO13(D7)| GPIO13 |  SPI: MOSI |
-|E|GPIO14(D5)| GPIO14 |  SPI: SCK |
+|RS|GPIO15(D6)|GPIO15|SPI: CS, CS_PIN|
+|R/W|GPIO13(D7)| GPIO13 |SPI: MOSI|
+|E|GPIO14(D5)| GPIO14 |SPI: SCK|
 |DB0|-|-|-|
 |..|-|-|-|
 |DB7|-|-|-|
