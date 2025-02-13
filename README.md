@@ -10,17 +10,17 @@ Framebuffer display driver for LiquidCrystal LCD12864 (SPI)
 |GND|GND|GND|  |
 |VCC|+5V|+5V| or VIN |
 |V0|-|-|-|
-|RS|CS_PIN|CS_PIN|Chip Select|
+|RS|GPIO15(D6)|GPIO15|CS_PIN|
 |R/W|GPIO13(D7)| GPIO13 |  SPI: MOSI |
 |E|GPIO14(D5)| GPIO14 |  SPI: SCK |
 |DB0|-|-|-|
 |..|-|-|-|
 |DB7|-|-|-|
-|PSB|GND|GND|  or LOW value |
+|PSB|GND|GND|or LOW state|
 |NC|-|-|-|
-|RST|+3.3v|+3.3v|  or HI value |
+|RST|GPIO4(D2)|GPIO4|RST_PIN or +3.3v|
 |VOUT|-|-|-|
-|BLA|+3.3 or 5v|+3.3 or 5v|Backlight+|
+|BLA|+3.3 or +5v|+3.3 or +5v|Backlight+|
 |BLK|GND|GND|Backlight-|
 
 Code example:
@@ -30,7 +30,7 @@ from machine import SPI
 from lcd12864_spi import LCD12864_SPI
 
 spi = SPI( 1, baudrate = 1_000_000, polarity = 1, phase = 1 )
-lcd = LCD12864_SPI( spi = spi, cs_pin = 15, rotation = 1 )
+lcd = LCD12864_SPI( spi = spi, cs_pin = 15, rst_pin = 4, rotation = 1 )
 
 lcd.text( "MicroPython !", 10, 25, 1 )
 lcd.rect( 0, 0, 128, 64, 1 )
