@@ -3,7 +3,7 @@ from lcd12864_spi import LCD12864_SPI
 from bitmaps import sun, suncloud, rain, rainlight, snowman
 from time import sleep
 
-spi = SPI( 1, baudrate = 4_000_000, polarity = 1, phase = 1 )
+spi = SPI( 1, baudrate = 1_000_000, polarity = 1, phase = 1 )
 lcd = LCD12864_SPI( spi = spi, cs_pin = 15, rotation = 1 )
   
 bitmaps = [sun, suncloud, rain, rainlight, snowman]

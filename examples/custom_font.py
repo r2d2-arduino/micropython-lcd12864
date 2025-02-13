@@ -3,7 +3,7 @@ from lcd12864_spi import LCD12864_SPI
 import LibreBodoni20 as MY_FONT
 from time import sleep
 # Set pins here
-spi = SPI( 1, baudrate = 4_000_000, polarity = 1, phase = 1 )
+spi = SPI( 1, baudrate = 1_000_000, polarity = 1, phase = 1 )
 lcd = LCD12864_SPI( spi = spi, cs_pin = 15, rotation = 1 )
 
 lcd.fill(0)
