@@ -4,7 +4,7 @@ from bitmaps import sun, suncloud, rain, rainlight, snowman
 from time import sleep
 
 spi = SPI( 1, baudrate = 1_000_000, polarity = 1, phase = 1 )
-lcd = LCD12864_SPI( spi = spi, cs_pin = 15, rotation = 1 )
+lcd = LCD12864_SPI( spi = spi, cs_pin = 15, rst_pin = 4, rotation = 1 )
   
 bitmaps = [sun, suncloud, rain, rainlight, snowman]
 size = 16

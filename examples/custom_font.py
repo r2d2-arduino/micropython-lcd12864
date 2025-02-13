@@ -4,7 +4,7 @@ import LibreBodoni20 as MY_FONT
 from time import sleep
 # Set pins here
 spi = SPI( 1, baudrate = 1_000_000, polarity = 1, phase = 1 )
-lcd = LCD12864_SPI( spi = spi, cs_pin = 15, rotation = 1 )
+lcd = LCD12864_SPI( spi = spi, cs_pin = 15, rst_pin = 4, rotation = 1 )
 
 lcd.fill(0)
 lcd.set_font(MY_FONT)
