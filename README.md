@@ -5,23 +5,23 @@ Framebuffer display driver for LiquidCrystal LCD12864 (SPI)
 
 **LCD12864 connect using SPI**
 
-|LCD12864|ESP8266|Notes|
-| ------ | ------ | ----- |
-|GND|GND|  |
-|VCC|+5V|  |
-|V0|-|  |
-|RS|GPIO15(D8)| SPI CS |
-|R/W|GPIO13(D7)| SPI Mosi |
-|E|GPIO14(D5)| SPI Sck |
-|DB0|-|  |
-|..|-|  | 
-|DB7|-|  |
-|PSB|GND|  |
-|NC|-|  |
-|RST|+5V|  |
-|VOUT|-|  |
-|BLA|+3.3V| or 5v |
-|BLK|GND|  |
+|LCD12864|ESP8266|ESP32|Notes|
+| ------ | ------ |------ | ----- |
+|GND|GND|GND|  |
+|VCC|+5V|+5V| or VIN |
+|V0|-|-|-|
+|RS|CS_PIN|CS_PIN|Chip Select|
+|R/W|GPIO13(D7)| GPIO13 |  SPI: MOSI |
+|E|GPIO14(D5)| GPIO14 |  SPI: SCK |
+|DB0|-|-|-|
+|..|-|-|-|
+|DB7|-|-|-|
+|PSB|GND|GND|  or LOW value |
+|NC|-|-|-|
+|RST|+3.3v|+3.3v|  or HI value |
+|VOUT|-|-|-|
+|BLA|+3.3 or 5v|+3.3 or 5v|Backlight+|
+|BLK|GND|GND|Backlight-|
 
 Code example:
 
@@ -29,7 +29,7 @@ Code example:
 from machine import SPI
 from lcd12864_spi import LCD12864_SPI
 
-spi = SPI( 1, baudrate = 4_000_000, polarity = 1, phase = 1 )
+spi = SPI( 1, baudrate = 1_000_000, polarity = 1, phase = 1 )
 lcd = LCD12864_SPI( spi = spi, cs_pin = 15, rotation = 1 )
 
 lcd.text( "MicroPython !", 10, 25, 1 )
