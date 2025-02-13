@@ -62,7 +62,7 @@ LCD_WIDTH  = const(128)
 LCD_HEIGHT = const(64)
 
 class LCD12864_SPI( FrameBuffer ):
-    def __init__( self, spi, cs_pin, rst_pin, rotation = 0 ):
+    def __init__( self, spi, cs_pin, rst_pin = None, rotation = 0 ):
         """ Constructor
         Args
         spi  (object): SPI
